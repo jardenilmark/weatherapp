@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Button, Linking, TouchableOpacity, Image } from 'react-native'
 import { RootState } from '../../../store'
 import { useSelector } from 'react-redux'
-import styles from './styles/LandingScreenStyles'
+import styles from './styles/landingScreenStyles'
 
 const LandingScreen = props => {
   const { getCurrentLocation, coordinates } = props

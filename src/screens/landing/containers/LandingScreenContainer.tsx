@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import LandingScreen from '../components/LandingScreen'
 import { getCurrentLocation } from '../actions/getCurrentLocationAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { setGithubInfo } from '../actions/setGithubInfo'
 import { RootState } from '../../../store'
 
-const HomeContainer = () => {
+const LandingContainer = () => {
   const dispatch = useDispatch()
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
 
@@ -17,4 +17,4 @@ const HomeContainer = () => {
   return <LandingScreen getCurrentLocation={() => getCurrentLocation(dispatch)} coordinates={coordinates} />
 }
 
-export default HomeContainer
+export default LandingContainer

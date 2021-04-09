@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { TouchableOpacity, View, Text } from 'react-native'
-import styles from './styles/LoginScreenStyles'
+import styles from './styles/loginScreenStyles'
 
 const LoginScreen = props => {
   const { getPermission } = props

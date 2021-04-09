@@ -6,7 +6,7 @@ import Landing from './screens/landing/containers/LandingScreenContainer'
 import Login from './screens/login/containers/LoginScreenContainer'
 import { useSelector } from 'react-redux'
 import { RootState } from './store'
-import Weather from './screens/weather/components/WeatherScreen'
+import Weather from './screens/weather/containers/WeatherScreenContainer'
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()

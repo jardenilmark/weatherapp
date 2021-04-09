@@ -11,6 +11,13 @@ type UserState = {
     githubURL: string
     pictureURL: string
   }
+  weather: {
+    temperature: number
+    description: string
+    main: string
+    pressure: number
+    humidity: number
+  }
 }
 
 const initialState: UserState = {
@@ -18,6 +25,13 @@ const initialState: UserState = {
   coordinates: {
     latitude: 0,
     longitude: 0,
+  },
+  weather: {
+    temperature: 0,
+    description: '',
+    main: '',
+    pressure: 0,
+    humidity: 0,
   },
   info: {
     name: '',
@@ -39,8 +53,11 @@ const usersSlice = createSlice({
     setUserInfo(state, action) {
       state.info = action.payload
     },
+    setWeatherInfo(state, action) {
+      state.weather = action.payload
+    },
   },
 })
 
-export const { setUserCoordinates, setUserPermission, setUserInfo } = usersSlice.actions
+export const { setUserCoordinates, setUserPermission, setUserInfo, setWeatherInfo } = usersSlice.actions
 export default usersSlice
