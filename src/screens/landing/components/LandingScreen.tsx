@@ -2,9 +2,9 @@ import React from 'react'
 import { View, Text, Button, Linking, TouchableOpacity, Image } from 'react-native'
 import { RootState } from '../../../store'
 import { useSelector } from 'react-redux'
-import styles from './styles/HomeScreenStyles'
+import styles from './styles/LandingScreenStyles'
 
-const HomeScreen = props => {
+const LandingScreen = props => {
   const { getCurrentLocation, coordinates } = props
   const { pictureURL, name, githubURL } = useSelector((state: RootState) => state.user.info)
   const { latitude, longitude } = coordinates
@@ -42,4 +42,4 @@ const HomeScreen = props => {
   )
 }
 
-export default HomeScreen
+export default LandingScreen
