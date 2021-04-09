@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import LandingScreen from '../components/LandingScreen'
 import { useDispatch, useSelector } from 'react-redux'
+
+import LandingScreen from '../components/LandingScreen'
+
 import { RootState } from '../../../store'
 import { getUserInfo } from '../../../common/auth'
-import { setUserCoordinates, setUserInfo } from '../../../slices/users-slice'
 import { getLocation } from '../../../common/location'
+import { setUserCoordinates, setUserInfo } from '../../../slices/users-slice'
 
 const LandingContainer = () => {
   const dispatch = useDispatch()

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { TouchableOpacity, View, Text } from 'react-native'
-import styles from './styles/loginScreenStyles'
 import Spinner from 'react-native-loading-spinner-overlay'
+
+import styles from './styles/loginScreenStyles'
 
 const LoginScreen = props => {
   const { getPermission, isLoading } = props
