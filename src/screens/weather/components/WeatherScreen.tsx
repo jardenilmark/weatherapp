@@ -1,4 +1,5 @@
 import React from 'react'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 import { Text, View } from 'react-native'
 import { getScreenWidth } from '../../../common/dimensions'
@@ -6,7 +7,7 @@ import { Table, Row } from 'react-native-table-component'
 import { bigScreenStyle, smallScreenStyle } from './styles/weatherScreenStyles'
 
 const WeatherScreen = props => {
-  const { weatherData } = props
+  const { weatherData, isLoading } = props
 
   const width = getScreenWidth
   const isBigScreen = width > 420
@@ -26,6 +27,7 @@ const WeatherScreen = props => {
 
   return (
     <View style={style.view}>
+      <Spinner visible={isLoading} />
       <Text style={style.titleText}>Weather Data</Text>
       <Table borderStyle={style.tableBorder}>
         <Row data={tableHead} style={style.rowHeader} textStyle={style.rowHeaderText} />

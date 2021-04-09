@@ -1,19 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import WeatherScreen from '../components/WeatherScreen'
-import { getWeatherInfo } from '../actions/getWeatherInfoAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store'
+import { getWeatherData } from '../../../common/weather'
+import { setWeatherInfo } from '../../../slices/users-slice'
 
 const WeatherScreenContainer = () => {
   const dispatch = useDispatch()
+  const [isLoading, setLoading] = useState(false)
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
   const weatherData = useSelector((state: RootState) => state.user.weather)
 
+  const getWeatherInfo = async () => {
+    setLoading(true)
+    const weatherData = await getWeatherData(coordinates)
+    dispatch(setWeatherInfo(weatherData))
+    setLoading(false)
+  }
+
   useEffect(() => {
-    getWeatherInfo(dispatch, coordinates)
+    getWeatherInfo()
   }, [])
 
-  return <WeatherScreen weatherData={weatherData} />
+  return <WeatherScreen weatherData={weatherData} isLoading={isLoading} />
 }
 
 export default WeatherScreenContainer
