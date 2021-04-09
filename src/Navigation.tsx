@@ -13,7 +13,8 @@ import Landing from './screens/landing/containers/LandingScreenContainer'
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
 
-/* Navigate between screens via drawer */
+/* Navigate between screens via drawer
+   Ensures users without access tokens cant jump to these routes */
 const HomeScreen = () => {
   return (
     <Drawer.Navigator initialRouteName={'Landing'}>
@@ -28,7 +29,7 @@ const Navigation = () => {
   const hasPermission = useSelector((state: RootState) => state.user.hasPermission)
 
   /* Main screens
-  Shows home screen only if authorized */
+     Shows home screen only if authorized */
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

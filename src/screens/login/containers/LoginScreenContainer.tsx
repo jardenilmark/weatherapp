@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { getToken } from '../../../common/storage'
 import LoginScreen from '../components/LoginScreen'
 import { getPermission } from '../actions/getPermissionAction'
-import { useDispatch } from 'react-redux'
-import { getToken } from '../../../common/storage'
 import { setUserPermission } from '../../../slices/users-slice'
 
 const LoginScreenContainer = () => {

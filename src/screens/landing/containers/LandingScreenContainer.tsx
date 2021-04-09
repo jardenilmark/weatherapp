@@ -13,11 +13,13 @@ const LandingContainer = () => {
   const [isLoading, setLoading] = useState(false)
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
 
+  /* Gets users current location and sends it to the redux store*/
   const getCurrentLocation = async () => {
     const coordinates = await getLocation()
     dispatch(setUserCoordinates(coordinates))
   }
 
+  /* Retrieves users github information based on the token and sends to the redux store */
   const setGithubInfo = async () => {
     const githubInfo = await getUserInfo()
     const { nickname, name, picture } = githubInfo

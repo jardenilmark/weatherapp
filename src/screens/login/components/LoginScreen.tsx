@@ -4,6 +4,7 @@ import Spinner from 'react-native-loading-spinner-overlay'
 
 import styles from './styles/loginScreenStyles'
 
+/* Main page for unauthorized users */
 const LoginScreen = props => {
   const { getPermission, isLoading } = props
 

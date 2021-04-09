@@ -9,7 +9,7 @@ const auth0 = new Auth0({
 })
 
 
-// Opens up auth0 universal browser and lets us login through github
+/* Opens up auth0 universal browser and lets us login through github */
 export const login = async () => {
   try {
     const credentials = await auth0.webAuth.authorize({ scope: 'openid profile email' })
@@ -26,7 +26,7 @@ export const login = async () => {
   }
 }
 
-// Gets users github information based on the access token
+/* Gets users github information based on the access token */
 export const getUserInfo = async () => {
   try {
     const accessToken = await getToken()
@@ -42,7 +42,7 @@ export const getUserInfo = async () => {
   }
 }
 
-// Clears github session if ever implemented
+/* Clears github session if ever implemented */
 export const logout = async () => {
   try {
     auth0.webAuth.clearSession()

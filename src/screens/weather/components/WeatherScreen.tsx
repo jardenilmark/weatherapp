@@ -1,10 +1,11 @@
 import React from 'react'
+import { Text, View } from 'react-native'
+import { Table, Row } from 'react-native-table-component'
 import Spinner from 'react-native-loading-spinner-overlay'
 
-import { Text, View } from 'react-native'
-import { getScreenWidth } from '../../../common/dimensions'
-import { Table, Row } from 'react-native-table-component'
 import { bigScreenStyle, smallScreenStyle } from './styles/weatherScreenStyles'
+
+import { getScreenWidth } from '../../../common/dimensions'
 
 const WeatherScreen = props => {
   const { weatherData, isLoading } = props

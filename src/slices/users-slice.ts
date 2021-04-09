@@ -1,16 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 type UserState = {
+  /* Permission referring to if user is logged in via github or not */
   hasPermission: boolean
+
+  /* Data for users current location */
   coordinates: {
     latitude: number
     longitude: number
   }
+
+  /* Users github information*/
   info: {
     name: string
     githubURL: string
     pictureURL: string
   }
+
+  /* Weather data fetched from the api */
   weather: {
     temperature: number
     description: string

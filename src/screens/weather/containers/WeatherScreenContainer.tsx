@@ -11,7 +11,8 @@ const WeatherScreenContainer = () => {
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
   const weatherData = useSelector((state: RootState) => state.user.weather)
 
-  /* inside the WeatherScreenContainer so we can pass setLoading directly */
+  /* Retrieves the weather data from the api and sends them to the redux store
+     Inside the WeatherScreenContainer so we can pass setLoading directly */
   const getWeatherInfo = async () => {
     setLoading(true)
     const weatherData = await getWeatherData(coordinates)
