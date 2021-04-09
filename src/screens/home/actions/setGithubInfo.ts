@@ -1,14 +1,15 @@
-import { getToken } from '../../../common/storage'
 import { getUserInfo } from '../../../common/auth'
 import { setUserInfo } from '../../../slices/users-slice'
 
-export const getGithubInfo = async dispatch => {
+export const setGithubInfo = async dispatch => {
   const githubInfo = await getUserInfo()
-  const { nickname } = githubInfo
+  const { nickname, name, picture } = githubInfo
+
   dispatch(
     setUserInfo({
-      nickname,
+      name,
       githubURL: `https://github.com/${nickname}`,
+      pictureURL: picture,
     })
   )
 }

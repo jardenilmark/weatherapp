@@ -1,30 +1,43 @@
 import React from 'react'
-import { View, Text, Button, Linking, TouchableOpacity } from 'react-native'
-
-const dummyName = 'Mark Jardenil'
-const dummyGithubLink = 'https://github.com/jardenilmark'
+import { View, Text, Button, Linking, TouchableOpacity, Image } from 'react-native'
+import { RootState } from '../../../store'
+import { useSelector } from 'react-redux'
+import styles from './styles/HomeScreenStyles'
 
 const HomeScreen = props => {
-  const { getCurrentLocation } = props
+  const { getCurrentLocation, coordinates } = props
+  const { pictureURL, name, githubURL } = useSelector((state: RootState) => state.user.info)
+  const { latitude, longitude } = coordinates
 
   return (
-    <View style={{ flex: 1, flexDirection: 'column' }}>
-      <View style={{ alignSelf: 'center' }}>
-        <Text style={{ textAlign: 'center' }}>{dummyName}</Text>
-        <TouchableOpacity onPress={() => Linking.openURL(dummyGithubLink)}>
-          <Text style={{ textAlign: 'center', color: 'blue', textDecorationLine: 'underline' }}>{dummyGithubLink}</Text>
+    <View style={styles.outermostView}>
+      <View style={styles.githubInfoOuterView}>
+        {pictureURL ? (
+          <Image style={styles.image} source={{ uri: pictureURL }} />
+        ) : (
+          <View style={styles.placeholderImage} />
+        )}
+        <Text style={styles.githubName}>{name}</Text>
+        <TouchableOpacity onPress={() => Linking.openURL(githubURL)}>
+          <Text style={styles.githubURL}>{githubURL}</Text>
         </TouchableOpacity>
       </View>
-      <Button
-        title={'SHOW LOCATION'}
-        onPress={async () => {
-          try {
-            await getCurrentLocation()
-          } catch(e) {
-            console.log(e)
-          }
-        }}
-      />
+      <View style={styles.coordinatesView}>
+        <Text style={styles.coordinatesText}>Latitude: {latitude}</Text>
+        <Text style={styles.coordinatesText}>Longitude: {longitude}</Text>
+        <View style={styles.buttonView}>
+          <Button
+            title={'UPDATE LOCATION'}
+            onPress={async () => {
+              try {
+                await getCurrentLocation()
+              } catch (e) {
+                console.log(e)
+              }
+            }}
+          />
+        </View>
+      </View>
     </View>
   )
 }

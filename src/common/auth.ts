@@ -1,5 +1,5 @@
 import Auth0 from 'react-native-auth0'
-import { storeToken } from './storage'
+import { getToken, storeToken } from './storage'
 import Snackbar from 'react-native-snackbar'
 
 /* This should be in the env file. Only here for demo purposes */
@@ -17,10 +17,25 @@ export const login = async () => {
   } catch (e) {
     console.log(e)
     Snackbar.show({
-      text: 'Unable to Login',
+      text: 'Unable to login',
       duration: Snackbar.LENGTH_LONG,
     })
     return false
+  }
+}
+
+export const getUserInfo = async () => {
+  try {
+    const accessToken = await getToken()
+    const userInfo = await auth0.auth.userInfo({ token: accessToken })
+
+    return userInfo
+  } catch (e) {
+    console.log(e)
+    Snackbar.show({
+      text: 'Unable to retrieve user info',
+      duration: Snackbar.LENGTH_LONG,
+    })
   }
 }
 
@@ -30,7 +45,7 @@ export const logout = async () => {
   } catch (e) {
     console.log(e)
     Snackbar.show({
-      text: 'Unable to Logout',
+      text: 'Unable to logout',
       duration: Snackbar.LENGTH_LONG,
     })
   }

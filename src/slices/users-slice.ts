@@ -6,6 +6,11 @@ type UserState = {
     latitude: number
     longitude: number
   }
+  info: {
+    name: string
+    githubURL: string
+    pictureURL: string
+  }
 }
 
 const initialState: UserState = {
@@ -13,6 +18,11 @@ const initialState: UserState = {
   coordinates: {
     latitude: 0,
     longitude: 0,
+  },
+  info: {
+    name: '',
+    githubURL: '',
+    pictureURL: '',
   },
 }
 
@@ -26,8 +36,11 @@ const usersSlice = createSlice({
     setUserPermission(state, action) {
       state.hasPermission = action.payload
     },
+    setUserInfo(state, action) {
+      state.info = action.payload
+    },
   },
 })
 
-export const { setUserCoordinates, setUserPermission } = usersSlice.actions
+export const { setUserCoordinates, setUserPermission, setUserInfo } = usersSlice.actions
 export default usersSlice
