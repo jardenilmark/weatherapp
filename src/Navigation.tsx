@@ -13,7 +13,7 @@ import Landing from './screens/landing/containers/LandingScreenContainer'
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
 
-/* Navigate between screens via drawer
+/* Navigate between screens via drawer by swiping from the left side towards the right
    Ensures users without access tokens cant jump to these routes */
 const HomeScreen = () => {
   return (
