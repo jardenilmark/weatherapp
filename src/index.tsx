@@ -8,13 +8,15 @@
 
 import * as React from 'react'
 
-import { View, Text } from 'react-native'
+import { Provider } from 'react-redux'
+import store from './store'
+import Navigation from './Navigation'
 
 const Root = () => {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   )
 }
 

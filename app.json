@@ -5,7 +5,7 @@
   "expo": {
     "name": "weatherApp",
     "slug": "weatherApp",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "platforms": [
       "ios",
       "android",
