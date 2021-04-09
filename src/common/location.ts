@@ -8,8 +8,11 @@ export const getLocation = async () => {
     }
 
     const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High })
-    console.log(location)
-    return location
+
+    return {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    }
   } catch (e) {
     console.log(e)
   }

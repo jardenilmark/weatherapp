@@ -14,6 +14,8 @@ target 'weatherApp' do
     :hermes_enabled => false
   )
 
+  pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
+
   target 'weatherAppTests' do
     inherit! :complete
     # Pods for testing
