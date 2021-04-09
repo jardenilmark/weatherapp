@@ -1,4 +1,5 @@
 import * as Location from 'expo-location'
+import Snackbar from 'react-native-snackbar'
 
 export const getLocation = async () => {
   try {
@@ -15,5 +16,9 @@ export const getLocation = async () => {
     }
   } catch (e) {
     console.log(e)
+    Snackbar.show({
+      text: e.message,
+      duration: Snackbar.LENGTH_LONG,
+    })
   }
 }

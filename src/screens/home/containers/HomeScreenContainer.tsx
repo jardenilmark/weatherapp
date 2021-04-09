@@ -1,20 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import HomeScreen from '../components/HomeScreen'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLocation } from '../actions/setLocation'
-import { RootState } from '../../../store'
+import { getCurrentLocation } from '../actions/getCurrentLocationAction'
+import { useDispatch } from 'react-redux'
 
 const HomeContainer = () => {
   const dispatch = useDispatch()
-  const { coordinates } = useSelector((state: RootState) => state.user)
-
-  console.log(coordinates)
-
-  useEffect(() => {
-    setLocation(dispatch)
-  }, [])
-
-  return <HomeScreen coordinates={coordinates} />
+  return <HomeScreen getCurrentLocation={() => getCurrentLocation(dispatch)} />
 }
 
 export default HomeContainer

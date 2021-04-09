@@ -23,8 +23,11 @@ const usersSlice = createSlice({
     setUserCoordinates(state, action) {
       state.coordinates = action.payload
     },
+    setUserPermission(state, action) {
+      state.hasPermission = action.payload
+    },
   },
 })
 
-export const { setUserCoordinates } = usersSlice.actions
+export const { setUserCoordinates, setUserPermission } = usersSlice.actions
 export default usersSlice

@@ -1,13 +1,11 @@
 import React from 'react'
 import { View, Text, Button, Linking, TouchableOpacity } from 'react-native'
 
-import Snackbar from 'react-native-snackbar'
-
 const dummyName = 'Mark Jardenil'
 const dummyGithubLink = 'https://github.com/jardenilmark'
 
-const Home = props => {
-  const { coordinates } = props
+const HomeScreen = props => {
+  const { getCurrentLocation } = props
 
   return (
     <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -19,14 +17,16 @@ const Home = props => {
       </View>
       <Button
         title={'SHOW LOCATION'}
-        onPress={() => {
-          Snackbar.show({
-            text: `Latitude: ${coordinates.latitude}, Longitude: ${coordinates.longitude}`,
-          })
+        onPress={async () => {
+          try {
+            await getCurrentLocation()
+          } catch(e) {
+            console.log(e)
+          }
         }}
       />
     </View>
   )
 }
 
-export default Home
+export default HomeScreen
