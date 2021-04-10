@@ -1,23 +1,23 @@
-#weatherApp
+# weatherApp
 A react native project for demonstration purposes.
 
-#Getting Started
-##Install Packages
+# Getting Started
+## Install Packages
 `yarn`
 
-##Start Server
+## Start Server
 `yarn start`
 
-##Run App on Android
+## Run App on Android
 `yarn android`
 
-#Built With
+# Built With
 
 - React Native
 - React-Redux
 - Expo
 
-#File Structure
+# File Structure
 
 ```
 android/
