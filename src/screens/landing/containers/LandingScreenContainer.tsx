@@ -85,13 +85,11 @@ const LandingContainer = () => {
 
   return (
     <LandingScreen
-      getCurrentLocation={() => getCurrentLocation()}
       pictureURL={pictureURL}
       name={name}
       githubURL={githubURL}
       coordinates={coordinates}
       isLoading={isLoading}
-      setLoading={setLoading}
       onPress={onPress}
     />
   )

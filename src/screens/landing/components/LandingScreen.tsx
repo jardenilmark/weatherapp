@@ -8,7 +8,7 @@ import { isOnLandscape } from '../../../common/dimensions'
 UI mostly. Logic is to be passed at the container preferably
 */
 const LandingScreen = props => {
-  const { getCurrentLocation, coordinates, isLoading, setLoading, pictureURL, name, githubURL, onPress } = props
+  const { coordinates, isLoading, pictureURL, name, githubURL, onPress } = props
   const { latitude, longitude } = coordinates
 
   const styles = isOnLandscape ? landscapeStyles : portraitStyles
