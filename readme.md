@@ -27,7 +27,6 @@ src/
     common/
     screens/
         screen name/
-            actions/
             containers/
             components/
                 styles/
