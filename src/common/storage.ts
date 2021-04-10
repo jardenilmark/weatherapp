@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import Snackbar from 'react-native-snackbar'
 
 /* Stores the access token */
 export const storeToken = async value => {

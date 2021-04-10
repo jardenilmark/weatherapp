@@ -1,6 +1,5 @@
 import Auth0 from 'react-native-auth0'
 import { getToken, storeToken } from './storage'
-import Snackbar from 'react-native-snackbar'
 
 /* This should be in the env file. Only here for demo purposes */
 const auth0 = new Auth0({

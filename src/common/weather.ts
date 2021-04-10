@@ -1,5 +1,3 @@
-import Snackbar from 'react-native-snackbar'
-
 /* Should be hidden in the .env file, only for demonstration purposes */
 const WEATHER_API_KEY = '705c09cb20634d20797589ad15f9c701'
 const baseURL = 'https://api.openweathermap.org'

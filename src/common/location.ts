@@ -1,5 +1,4 @@
 import * as Location from 'expo-location'
-import Snackbar from 'react-native-snackbar'
 
 /* Asks for permission and retrieves current location
    Refer to https://docs.expo.io/versions/latest/sdk/location/ */
