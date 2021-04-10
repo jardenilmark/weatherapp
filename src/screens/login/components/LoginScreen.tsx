@@ -2,11 +2,14 @@ import React from 'react'
 import { TouchableOpacity, View, Text } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 
-import styles from './styles/loginScreenStyles'
+import { portraitStyles, landscapeStyles } from './styles/loginScreenStyles'
+import { isOnLandscape } from '../../../common/dimensions'
 
 /* Main page for unauthorized users */
 const LoginScreen = props => {
   const { getPermission, isLoading } = props
+
+  const styles = isOnLandscape ? landscapeStyles : portraitStyles
 
   return (
     <View style={styles.viewOuterContainer}>

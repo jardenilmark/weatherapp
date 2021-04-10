@@ -2,8 +2,9 @@ import React from 'react'
 import { View, Text, Button, Linking, TouchableOpacity, Image } from 'react-native'
 import { RootState } from '../../../store'
 import { useSelector } from 'react-redux'
-import styles from './styles/landingScreenStyles'
+import { landscapeStyles, portraitStyles } from './styles/landingScreenStyles'
 import Spinner from 'react-native-loading-spinner-overlay'
+import { isOnLandscape } from '../../../common/dimensions'
 
 /*
 UI mostly. Logic is to be passed at the container preferably
@@ -12,6 +13,8 @@ const LandingScreen = props => {
   const { getCurrentLocation, coordinates, isLoading, setLoading } = props
   const { pictureURL, name, githubURL } = useSelector((state: RootState) => state.user.info)
   const { latitude, longitude } = coordinates
+
+  const styles = isOnLandscape ? landscapeStyles : portraitStyles
 
   return (
     <View style={styles.outermostView}>
@@ -46,6 +49,7 @@ const LandingScreen = props => {
                 Prevent double snackbars from popping up at the same time
                  */
                 console.log(e)
+                setLoading(false)
               }
             }}
           />

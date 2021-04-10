@@ -4,3 +4,4 @@ import { Dimensions } from 'react-native'
    Placed here so no need to do Dimensions.get every time */
 export const getScreenHeight = Dimensions.get('window').height
 export const getScreenWidth = Dimensions.get('window').width
+export const isOnLandscape = getScreenWidth > getScreenHeight

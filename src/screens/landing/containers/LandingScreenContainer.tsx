@@ -7,6 +7,7 @@ import { RootState } from '../../../store'
 import { getUserInfo } from '../../../common/auth'
 import { getLocation } from '../../../common/location'
 import { setUserCoordinates, setUserInfo } from '../../../slices/users-slice'
+import Snackbar from 'react-native-snackbar'
 
 const LandingContainer = () => {
   const dispatch = useDispatch()
@@ -15,30 +16,50 @@ const LandingContainer = () => {
 
   /* Gets users current location and sends it to the redux store*/
   const getCurrentLocation = async () => {
-    const coordinates = await getLocation()
-    dispatch(setUserCoordinates(coordinates))
+    try {
+      const coordinates = await getLocation()
+      dispatch(setUserCoordinates(coordinates))
+    } catch (e) {
+      console.log(e)
+      Snackbar.show({
+        text: e.message,
+        duration: Snackbar.LENGTH_LONG,
+      })
+    }
   }
 
   /* Retrieves users github information based on the token and sends to the redux store */
   const setGithubInfo = async () => {
-    const githubInfo = await getUserInfo()
-    const { nickname, name, picture } = githubInfo
+    try {
+      const githubInfo = await getUserInfo()
+      const { nickname, name, picture } = githubInfo
 
-    dispatch(
-      setUserInfo({
-        name,
-        githubURL: `https://github.com/${nickname}`,
-        pictureURL: picture,
+      dispatch(
+        setUserInfo({
+          name,
+          githubURL: `https://github.com/${nickname}`,
+          pictureURL: picture,
+        })
+      )
+    } catch (e) {
+      console.log(e)
+      Snackbar.show({
+        text: 'Unable to retrieve user info',
+        duration: Snackbar.LENGTH_LONG,
       })
-    )
+    }
   }
 
   useEffect(() => {
     const onStart = async () => {
-      setLoading(true)
-      await setGithubInfo()
-      await getCurrentLocation()
-      setLoading(false)
+      try {
+        setLoading(true)
+        await setGithubInfo()
+        await getCurrentLocation()
+        setLoading(false)
+      } catch (e) {
+        setLoading(false)
+      }
     }
 
     onStart()
