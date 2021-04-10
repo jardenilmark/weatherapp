@@ -13,6 +13,7 @@ const LandingContainer = () => {
   const dispatch = useDispatch()
   const [isLoading, setLoading] = useState(false)
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
+  const { pictureURL, name, githubURL } = useSelector((state: RootState) => state.user.info)
 
   /* Gets users current location and sends it to the redux store*/
   const getCurrentLocation = async () => {
@@ -68,6 +69,9 @@ const LandingContainer = () => {
   return (
     <LandingScreen
       getCurrentLocation={() => getCurrentLocation()}
+      pictureURL={pictureURL}
+      name={name}
+      githubURL={githubURL}
       coordinates={coordinates}
       isLoading={isLoading}
       setLoading={setLoading}
