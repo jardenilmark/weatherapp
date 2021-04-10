@@ -8,7 +8,7 @@ import { isOnLandscape } from '../../../common/dimensions'
 UI mostly. Logic is to be passed at the container preferably
 */
 const LandingScreen = props => {
-  const { getCurrentLocation, coordinates, isLoading, setLoading, pictureURL, name, githubURL } = props
+  const { getCurrentLocation, coordinates, isLoading, setLoading, pictureURL, name, githubURL, onPress } = props
   const { latitude, longitude } = coordinates
 
   const styles = isOnLandscape ? landscapeStyles : portraitStyles
@@ -32,24 +32,7 @@ const LandingScreen = props => {
         <Text style={styles.coordinatesText}>Latitude: {latitude}</Text>
         <Text style={styles.coordinatesText}>Longitude: {longitude}</Text>
         <View style={styles.buttonView}>
-          <Button
-            title={'UPDATE LOCATION'}
-            onPress={async () => {
-              try {
-                /* Manually update location */
-                setLoading(true)
-                await getCurrentLocation()
-                setLoading(false)
-              } catch (e) {
-                /*
-                Didnt pass a snackbar here since its already being caught.
-                Prevent double snackbars from popping up at the same time
-                 */
-                console.log(e)
-                setLoading(false)
-              }
-            }}
-          />
+          <Button title={'UPDATE LOCATION'} onPress={onPress} />
         </View>
       </View>
     </View>

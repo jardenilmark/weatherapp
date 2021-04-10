@@ -15,6 +15,23 @@ const LandingContainer = () => {
   const coordinates = useSelector((state: RootState) => state.user.coordinates)
   const { pictureURL, name, githubURL } = useSelector((state: RootState) => state.user.info)
 
+  const onPress = async () => {
+    try {
+      /* Manually update location */
+      setLoading(true)
+      await getCurrentLocation()
+      console.log('test')
+      setLoading(false)
+    } catch (e) {
+      /*
+      Didnt pass a snackbar here since its already being caught.
+      Prevent double snackbars from popping up at the same time
+       */
+      console.log(e)
+      setLoading(false)
+    }
+  }
+
   /* Gets users current location and sends it to the redux store*/
   const getCurrentLocation = async () => {
     try {
@@ -75,6 +92,7 @@ const LandingContainer = () => {
       coordinates={coordinates}
       isLoading={isLoading}
       setLoading={setLoading}
+      onPress={onPress}
     />
   )
 }
